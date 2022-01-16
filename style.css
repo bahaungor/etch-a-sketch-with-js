@@ -14,7 +14,9 @@ body {
 
 .body {
     min-height: 100vh;
-    padding: 20px 20px;
+    display: flex;
+    justify-content: center;
+    padding: 40px 10px;
 }
 
 .footer {
@@ -25,8 +27,13 @@ body {
     font-weight: 600;
 }
 
+.row.box {
+    display: flex;
+}
+
 .box{
-    min-width: 50px;
-    min-height: 50px;
+    height: 5vw;
+    width: 70vw;
     border: 1px solid lightgrey;
+    flex: 1 1 auto;
 }
