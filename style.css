@@ -1,39 +1,110 @@
-body {
+*{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header{
+    background-color: ghostwhite;
     text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 45px;
+    font-weight: 800;
+    padding: 0.5vw 2vw;
 }
 
-.header {
-    background-color: rgb(29, 29, 85);
-    color: white;
-    padding: 15px 10px;
-    font-size: 40px;
-    font-weight: 700;
-}
-
-.body {
-    min-height: 100vh;
+.body{
     display: flex;
-    justify-content: center;
-    padding: 40px 10px;
+    padding: 15px 15px;
 }
 
-.footer {
-    background-color: rgb(29, 29, 85);
-    color: white;
-    padding: 10px 5px;
-    font-size: 20px;
+.options{
+    text-align: center;
+    flex: 2;
+    background-color: hotpink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.color-picker{
+    margin: 35px auto;
+    background: none;
+    padding: none;
+    border: none;
+    width: 80px;
+    height: 80px;
+    transition: 0.1s;
+}
+
+.color-picker:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.button{
+    border: 1px solid darkgray;
+    padding: 10px 50px;
+    border-radius: 10px;
+    background-color: ghostwhite;
+    white-space: nowrap;
+    font-weight: 500;
+    margin-bottom: 25px;
+    transition: 0.1s;
+    max-width: 235px;
+    width: 100%;
+}
+
+.button:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.pixel-status{
     font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
-.row.box {
+.slider-container{
     display: flex;
+    font-weight: 600;
+    gap: 10px;
 }
 
-.box{
-    height: 5vw;
-    width: 70vw;
-    border: 1px solid lightgrey;
-    flex: 1 1 auto;
+.slider-title{
+    margin-top: -5px;
+    white-space: nowrap;
+}
+
+.slider:hover{
+    cursor: pointer;
+}
+
+.grid-flex{
+    flex: 3;
+    background-color: gold;
+}
+
+.grid-container{
+    background-color: black;
+    padding: 1px;
+    display: grid;
+    grid-gap: 1px;
+    max-width: 450px;
+    min-width: 350px;
+}
+
+.grid-item{
+    background-color: ghostwhite;
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.footer{
+    background-color: ghostwhite;
+    text-align: center;
+    padding: 1vw 2vw;
+    font-weight: 600;
 }
