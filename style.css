@@ -60,7 +60,6 @@ main{
 
 .settings button, input[type='color']{
     border: none;
-    cursor: pointer;
     transition: all .07s ease;
     height: 80px;
     width: 80px;
@@ -77,7 +76,7 @@ main{
 
 .settings button:hover, input[type='color']:hover{
     transform: scale(1.1);
-    cursor: pointer;
+    cursor:pointer;
 }
 
 .active{
