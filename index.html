@@ -1,34 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./style.css">
-        <script src="./script.js" defer></script>
-        <title>Etch-A-Sketch</title>
-    </head>
-    <body>
-        <div class="header">Etch-A-Sketch</div>
-        <div class="body">
-            <div class="options">
-                <input type="color" class="color-picker">
-                <div class="selected button color-mode">Color Mode</div>
-                <div class="button rainbow-mode">Rainbow Mode</div>
-                <div class="button ereaser">Ereaser</div>
-                <div class="button clear">Clear</div>
-                <div class="pixel-status">16 x 16</div>
-                <div class="slider-container">
-                    <div class="slider-title">Pixel Size:</div>
-                    <input type="range" min=1 max=64 value=16 class="slider">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-e-Sketch</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header">Etch a Sketch</div>
+    </header>
+    <main>
+        <div class="main">
+            <div class="settings">
+                <input type="color" class="color-pick">
+                <button class="color-mode active">Color Mode</button>
+                <button class="rainbow-mode">Rainbow Mode</button>
+                <button class="ereaser">Ereaser</button>
+                <button class="clear">Clear</button>
+                <div class="pixel-size-container">
+                    <h2>16 x 16</h2>
+                    <div class="pixel-size-inner-container">
+                        <h4>Pixel Size:</h4>
+                        <input type="range" class="pixel-size" name="pixel-size" id="pixel-size" min="1" max="64" value="16" autocomplete="off">
+                    </div>
                 </div>
             </div>
-            <div class="grid-flex">
-                <div class="grid-container">
-                    <div class="grid-item"></div>
+            <div class="grid-container">
+                <div class="grid">
+                    <div class="grid-column">
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                    </div>
+                    <div class="grid-column">
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                    </div>
+                    <div class="grid-column">
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer">Copyright © Bahadir UNGOR. Made for The Odin Project</div>
-    </body>
+    </main>
+    <footer>
+        <div class="footer">Copyright © Bahadir UNGOR</div>
+    </footer>
+</body>
 </html>

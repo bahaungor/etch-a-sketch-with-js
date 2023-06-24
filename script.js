@@ -1,78 +1,50 @@
-const colorPicker = document.querySelector(".color-picker")
-const buttons = document.querySelectorAll(".button")
-const colorModeButton = document.querySelector(".color-mode")
-const rainbowModeButton = document.querySelector(".rainbow-mode")
-const ereaserButton = document.querySelector(".ereaser")
-const clearButton = document.querySelector(".clear")
-const pixelStatus = document.querySelector(".pixel-status")
-const slider = document.querySelector(".slider");
-const container = document.querySelector(".grid-container");
-let gridSize;
-colorPicker.value = "#333333";
-slider.addEventListener("mouseup", updateGridSize);//Update grid size based on slider
-slider.addEventListener("input", updatePixelStatus);//Update pixel status as you drag slider
-colorModeButton.addEventListener("click", selectColorMode);
-rainbowModeButton.addEventListener("click", selectRainbowMode);
-ereaserButton.addEventListener("click", ereaserMode);
-clearButton.addEventListener("click", clearAll)
+const colorPicker = document.querySelector("input[type='color']");
+const buttons = document.querySelectorAll(".color-mode,.rainbow-mode,.ereaser");
+const colorModeButton = document.querySelector('.color-mode');
+const rainbowButton = document.querySelector('.rainbow-mode');
+const clearButton = document.querySelector('.clear');
+const slider = document.querySelector(".pixel-size-inner-container input");
+const pixelSize = document.querySelector('.pixel-size-container h2');
+const grid = document.querySelector(".grid");
 
-//Create default 16x16 grid & add event listener to each grid item
-container.innerHTML = "";
-for (let i = 0; i<16*16 ;i++) {
-    const div = document.createElement("div");
-    div.classList.add("grid-item");
-    container.appendChild(div);
+buttons.forEach(button => button.addEventListener("click", buttonClasser))
+clearButton.addEventListener('click', createGrid)
+slider.addEventListener('input', createGrid)
+
+function buttonClasser(){
+    removeActives(buttons)
+    this.classList.add('active')
 }
-container.style.cssText = "grid-template-columns: repeat(" + 16 + ", 1fr)";
-gridItems = document.querySelectorAll(".grid-item");
-gridItems.forEach(gridItem => gridItem.addEventListener("mouseenter", paintGrid));
 
-//Update grid size & add event listener to each grid item
-function updateGridSize(e) {
-    console.log("update grid size function is called");
-    container.innerHTML = "";
-    gridSize = e.target.value;
-    for (let i = 0; i<Math.pow(gridSize,2) ;i++) {
-        const div = document.createElement("div");
-        div.classList.add("grid-item");
-        container.appendChild(div);
+function removeActives(nodes){
+    nodes.forEach(node => node.classList.remove('active'))
+}
+
+function createGrid(){
+    grid.innerHTML = '';
+    pixelSize.textContent = `${slider.value} x ${slider.value}`;
+    for (let i = 0; i < slider.value; i++) {
+        const gridRow = document.createElement('div');
+        gridRow.classList.add('grid-row');
+        grid.appendChild(gridRow);
+        for (let j = 0; j < slider.value; j++) {
+            const gridItem = document.createElement('div');
+            gridItem.classList.add('grid-item');
+            gridRow.appendChild(gridItem);
+            gridItem.addEventListener("mouseenter", paint)
+        }
     }
-    container.style.cssText = "grid-template-columns: repeat(" + e.target.value + ", 1fr)";
-    gridItems = document.querySelectorAll(".grid-item");
-    gridItems.forEach(gridItem => gridItem.addEventListener("mouseenter", paintGrid));
+    colorPicker.value = '#333333'
 }
 
-function updatePixelStatus(e){
-    pixelStatus.textContent = e.target.value + "x" + e.target.value;
-}
-
-//Paint grid based on button selection (by class)
-function paintGrid(){
-    if(colorModeButton.classList.contains("selected")){
+function paint(){
+    if (rainbowButton.classList.contains('active')){
+        this.style.backgroundColor = "#"+Math.floor(Math.random()*16777215).toString(16);
+    } else if (colorModeButton.classList.contains('active')){
         this.style.backgroundColor = colorPicker.value;
-    } else if(rainbowModeButton.classList.contains("selected")){
-        this.style.backgroundColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
     } else {
-        this.style.backgroundColor = "#f8f8ff";
+        this.style.backgroundColor = '#eeeeee'
     }
- 
 }
 
-function selectColorMode(){
-    buttons.forEach(button => button.classList.remove("selected"));
-    colorModeButton.classList.add("selected");
-}
-
-function selectRainbowMode(){
-    buttons.forEach(button => button.classList.remove("selected"));
-    rainbowModeButton.classList.add("selected");
-}
-
-function ereaserMode(){
-    buttons.forEach(button => button.classList.remove("selected"));
-    ereaserButton.classList.add("selected");
-}
-
-function clearAll(){
-    gridItems.forEach(gridItem => gridItem.style.backgroundColor = "#f8f8ff");
-}
+window.addEventListener('load', createGrid)
