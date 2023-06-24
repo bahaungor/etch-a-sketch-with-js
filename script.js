@@ -33,6 +33,7 @@ function createGrid(){
             gridRow.appendChild(gridItem);
             gridItem.addEventListener("mouseenter", paint)
             gridItem.addEventListener("touchstart", paint)
+            gridItem.addEventListener("touchmove", paint)
         }
     }
     colorPicker.value = '#333333'
